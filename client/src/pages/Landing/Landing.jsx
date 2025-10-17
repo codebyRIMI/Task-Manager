@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './Landing.scss';
-import Navbar from '../components/Navbar/Navbar';
+import Navbar from '../../components/Navbar/Navbar';
 
 const Landing = () => {
   const [activeTab, setActiveTab] = useState('signin');
@@ -13,6 +13,21 @@ const Landing = () => {
         <h1>Welcome to TaskMaster</h1>
         <p>Organize your tasks efficiently, track progress, and achieve your goals effortlessly.</p>
       </section>
+
+      <div className="stats">
+        <div className="stat">
+          <h3>10K+</h3>
+          <p>Active Users</p>
+        </div>
+        <div className="stat">
+          <h3>500K+</h3>
+          <p>Tasks Completed</p>
+        </div>
+        <div className="stat">
+          <h3>99.9%</h3>
+          <p>Uptime</p>
+        </div>
+      </div>
 
       {/* Features Section */}
       <section className="landing__features">
