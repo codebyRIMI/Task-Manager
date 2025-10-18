@@ -1,0 +1,98 @@
+.sidebar {
+  width: 240px;
+  background: #1e1e2f;
+  color: #fff;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: fixed;
+  left: 0;
+  top: 0;
+  padding: 1rem;
+  transition: width 0.3s ease;
+  box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 100;
+  font-family: "Poppins", sans-serif;
+
+
+
+
+  .sidebar__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+
+    .sidebar__logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+
+      .logo-icon {
+        font-size: 1.5rem;
+      }
+
+      h1 {
+        font-size: 1.2rem;
+        font-weight: 600;
+      }
+    }
+  }
+
+  .sidebar__menu {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    
+
+    .sidebar__link {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      color: #bdbdbd;
+      text-decoration: none;
+      padding: 0.8rem 1rem;
+      border-radius: 8px;
+      transition: background 0.3s ease, color 0.3s ease;
+
+      &:hover {
+        background: #292945;
+        color: #fff;
+      }
+
+      &.active {
+        background: #ffffff;
+        color: #000000;
+      }
+
+      svg {
+        flex-shrink: 0;
+      }
+    }
+  }
+
+  .sidebar__bottom {
+    margin-top: auto;
+    margin-bottom: 3rem;
+    text-align: center;
+
+    .logout {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #000000;
+      gap: 0.5em;
+      padding: 1rem;
+      border-radius: 5px;
+      background-color: #bdbdbd;
+      cursor: pointer;
+      text-decoration: none;
+
+      &:hover {
+        background: rgba(255, 107, 107, 0.1);
+        color: red;
+      }
+    }
+  }
+}

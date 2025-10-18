@@ -1,6 +1,11 @@
 import { useState } from 'react';
 import './Landing.scss';
 import Navbar from '../../components/Navbar/Navbar';
+import task from '../../assets/task.png';
+import track from '../../assets/track.png';
+import collab from '../../assets/collab.png';
+
+
 
 const Landing = () => {
   const [activeTab, setActiveTab] = useState('signin');
@@ -34,14 +39,17 @@ const Landing = () => {
         <h2>Why TaskMaster?</h2>
         <div className="features__grid">
           <div className="feature">
+            <img src= {task} alt="err" />
             <h3>Easy Task Management</h3>
             <p>Create, update, and delete tasks with a simple interface.</p>
           </div>
           <div className="feature">
+            <img src= {track} alt="err" />
             <h3>Track Progress</h3>
             <p>Monitor your daily and weekly progress efficiently.</p>
           </div>
           <div className="feature">
+            <img src= {collab} alt="err" />
             <h3>Collaborate</h3>
             <p>Share tasks and collaborate with your team seamlessly.</p>
           </div>

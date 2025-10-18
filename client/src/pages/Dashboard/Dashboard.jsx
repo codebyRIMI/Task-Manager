@@ -1,3 +1,4 @@
+import Sidebar from "../../components/sidebar/sidebar";
 import "./Dashboard.scss";
 
 const Dashboard = () => {
@@ -125,6 +126,7 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard">
+      <Sidebar/>
       {/*  Dynamic Stats Section */}
       <section className="dashboard__stats">
         {statsData.map((stat, i) => (
