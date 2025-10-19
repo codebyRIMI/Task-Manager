@@ -8,7 +8,7 @@ const Sidebar = () => {
     { icon: <CheckSquare size={20} />, label: "Tasks", path: "/tasks" },
     { icon: <Folder size={20} />, label: "Projects", path: "/projects" },
     { icon: <Clock size={20} />, label: "Analytics", path: "/analytics" },
-    { icon: <Settings size={20} />, label: "Settings", path: "/settings" },
+    // { icon: <Settings size={20} />, label: "Settings", path: "/settings" },
   ];
 
   return (
@@ -39,6 +39,18 @@ const Sidebar = () => {
 
       {/* Bottom Logout Section */}
       <div className="sidebar__bottom">
+        <div className="sidebar__menu">
+        <NavLink
+            to= "/settings"
+            className={({ isActive }) =>
+              `sidebar__link ${isActive ? "active" : ""}`
+            }
+          >
+            <Settings size={20} />
+            <span>Settings</span>
+          </NavLink>
+          </div>
+          
         <NavLink to="/" className="sidebar__link logout">
           <LogOut size={20} />
           <span>Logout</span>
