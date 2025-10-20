@@ -102,9 +102,15 @@
       }
 
       .notification-setting {
-        display: flex;
         justify-content: space-between;
         align-items: center;
+
+        .notification{
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 2rem;
+        }
 
         h4 {
           font-weight: 600;
@@ -161,6 +167,86 @@
           }
         }
       }
+      .password {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        h2 {
+          font-size: 1rem;
+          font-weight: 600;
+        }
+
+        input {
+          padding: 0.7rem 1rem;
+          border: 1px solid #ddd;
+          border-radius: 10px;
+          font-size: 0.9rem;
+          background: #f8f8f8;
+          outline: none;
+
+          &:focus {
+            border-color: #000;
+            background: #fff;
+          }
+        }
+        span{
+          font-size: 0.85rem;
+          color: #777;
+        }
+        .update-btn {
+          align-self: flex-end;
+          background: #000;
+          color: #fff;
+          border: none;
+          padding: 0.7rem 1.4rem;
+          border-radius: 10px;
+          font-weight: 500;
+          cursor: pointer;
+          transition: 0.2s;
+          margin-top: 1rem;
+
+          &:hover {
+            opacity: 0.85;
+          }
+        }
+      }
+
+      .Delete{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 1rem;
+
+        .delete-text{
+          h3{
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+            color: red;
+          }
+          p{
+            font-size: 0.85rem;
+            color: #777;
+          }
+        }
+
+        .delete-btn{
+          background: #ff4d4f;
+          color: #fff;
+          border: none;
+          padding: 0.7rem 1.4rem;
+          border-radius: 10px;
+          font-weight: 500;
+          cursor: pointer;
+          transition: 0.2s;
+
+          &:hover {
+            opacity: 0.85;
+          }
+        }
+      }
+
     }
   }
 }

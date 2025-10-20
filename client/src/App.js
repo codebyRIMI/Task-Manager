@@ -5,6 +5,7 @@ import Dashboard from './pages/Dashboard/Dashboard';
 import Tasks from './pages/Tasks/Tasks';
 import Projects from './pages/Projects/Projects';
 import Settings from './pages/settings/settings';
+import Profile from './pages/profile/profile';
 
 function App() {
   return (
@@ -17,6 +18,8 @@ function App() {
           <Route path="/projects" element={<Projects/>} />
           <Route path="/analytics" element={<Dashboard/>} />
           <Route path="/settings" element={<Settings/>} />
+          <Route path="/profile" element={<Profile/>} />
+
         </Routes>
       </div>
     </Router>
