@@ -4,11 +4,66 @@ import Navbar from '../../components/Navbar/Navbar';
 import task from '../../assets/task.png';
 import track from '../../assets/track.png';
 import collab from '../../assets/collab.png';
-
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 
 const Landing = () => {
   const [activeTab, setActiveTab] = useState('signin');
+  const [inputs, setInputs] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
+  
+  const [loginInput, setLoginInput] = useState({
+    email: "",
+    password: "",
+  });
+  const [err, setErr] = useState(null);
+  
+
+  //for register
+  const handleChange = (e) => {
+    setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleClick = async (e) => {
+    e.preventDefault();
+
+    try {
+      await axios.post("http://localhost:5000/register", inputs);
+    } catch (err) {
+      setErr(err);
+    }
+  };
+
+  //for login
+  const navigate = useNavigate()
+
+  const handleLoginChange = (e) => {
+    setLoginInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.post("http://localhost:5000/register/login", loginInput);
+
+      if (res.data.error) {
+        // backend sent an error message
+        setErr(res.data.error);
+        return;
+      }
+
+      localStorage.setItem("accessToken", res.data.token);
+      navigate("/dashboard");
+    } catch (err) {
+      setErr(err.response?.data?.error || "Something went wrong. Please try again.");
+    }
+  };
+
+
 
   return (
     <div className="landing">
@@ -82,20 +137,56 @@ const Landing = () => {
           {activeTab === 'signin' ? (
             <form className="auth__form">
               <label>Email</label>
-              <input type="email" placeholder="name@example.com" required />
+              <input 
+              type="email" placeholder="name@example.com" 
+              name='email'
+              value={loginInput.email}
+              onChange={handleLoginChange}
+              required />
+
               <label>Password</label>
-              <input type="password" placeholder="********" required />
-              <button type="submit" className="btn btn-primary">Sign In</button>
+              <input type="password" placeholder="********" 
+              name='password'
+              value={loginInput.password}
+              onChange={handleLoginChange}
+              required />
+              { err && <p style={{color:"red", fontSize:"12px"}}>{err}</p>}
+              <button type="submit" className="btn btn-primary" onClick={handleLogin}>Sign In</button>
             </form>
           ) : (
             <form className="auth__form">
               <label>Full Name</label>
-              <input type="text" placeholder="John Doe" required />
+              <input 
+              type="text" 
+              placeholder="John Doe" 
+              value={inputs.username}
+              name="username" 
+              onChange={handleChange}
+              required />
+
+
               <label>Email</label>
-              <input type="email" placeholder="name@example.com" required />
+              <input 
+              type="email" 
+              placeholder="name@example.com" 
+              value={inputs.email}
+              name="email" 
+              onChange={handleChange}
+              required />
+
+
               <label>Password</label>
-              <input type="password" placeholder="********" required />
-              <button type="submit" className="btn btn-primary">Sign Up</button>
+              <input 
+              type="password"
+              placeholder="********" 
+              value={inputs.password}
+              name="password" 
+              onChange={handleChange}
+              required />
+
+              { err && <p style={{color:"red", fontSize:"12px"}}>{err}</p>}
+
+              <button type="submit" className="btn btn-primary" onClick={handleClick}>Sign Up</button>
             </form>
           )}
         </div>

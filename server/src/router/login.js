@@ -20,18 +20,37 @@ router.post("/", async (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
+  const { email, password } = req.body;
 
-    const { email, password, username } = req.body;
-    const user = await Loginmodel.findOne({ email: email });
-    if (!user) return res.json({ error: "User Doesn't Exist"});
-    bcrypt.compare(password, user.password).then(async (match) => {
-        if (!match) return res.json({ error: "Wrong email And Password Combination"});
-        const accessToken = sign({email: user.email, id: user._id, username: user.username},
-            "importantSecret",{expiresIn: "1d",}
-        );
-        res.json({ token: accessToken, email: user.email, id: user._id,username: user.username });
-    });
+  // Input validation
+  if (!email || !password) {
+    return res.status(400).json({ error: "Email and password are required" });
+  }
+
+  const user = await Loginmodel.findOne({ email });
+  if (!user) {
+    return res.status(401).json({ error: "User doesn't exist" });
+  }
+
+  const match = await bcrypt.compare(password, user.password);
+  if (!match) {
+    return res.status(401).json({ error: "Wrong email or password" });
+  }
+
+  const accessToken = sign(
+    { email: user.email, id: user._id, username: user.username },
+    "importantSecret",
+    { expiresIn: "1d" }
+  );
+
+  return res.status(200).json({
+    token: accessToken,
+    email: user.email,
+    id: user._id,
+    username: user.username,
+  });
 });
+
 
 router.get("/auth", validateToken, (req, res) => {
     res.json(req.user);
