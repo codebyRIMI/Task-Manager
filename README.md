@@ -69,7 +69,7 @@ npm start
 App runs on http://localhost:3000
 
 
-##🔮 Future Improvements
+## 🔮 Future Improvements
 
 1) Role-based authentication
 2) Task deadlines & reminders
@@ -78,7 +78,7 @@ App runs on http://localhost:3000
 5) Deployment (Vercel + Render)
 6) and this is currently being updated too.
 
-##🤝 Contributing
+## 🤝 Contributing
 
 Contributions are welcome!
 Feel free to fork the repository and submit a pull request.
@@ -88,8 +88,8 @@ Feel free to fork the repository and submit a pull request.
 This project is licensed under the MIT License.
 
 
-👤 Author
+## 👤 Author
 
-Rimi Halder
-GitHub: https://github.com/codebyRIMI
+- Rimi Halder
+- GitHub: https://github.com/codebyRIMI
 
